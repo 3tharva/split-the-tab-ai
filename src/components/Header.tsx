@@ -1,26 +1,37 @@
 
 import React from 'react';
+import { Button } from '@/components/ui/button';
+import { Receipt, User, Menu } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
 
 const Header: React.FC = () => {
   return (
-    <header className="py-6 w-full">
+    <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
       <div className="container mx-auto px-4">
-        <div className="flex justify-between items-center">
+        <div className="flex h-16 items-center justify-between">
           <div className="flex items-center gap-2">
-            <div className="w-8 h-8 bg-primary rounded-lg flex items-center justify-center">
-              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-primary-foreground">
-                <path d="M4 6v18M14 6v18"></path>
-                <path d="M7 12h8M7 18h8"></path>
-                <path d="M8 6h12l-4 6 4 6H8a4 4 0 0 1-4-4V10a4 4 0 0 1 4-4Z"></path>
-              </svg>
+            <div className="flex h-10 w-10 items-center justify-center rounded-md bg-primary">
+              <Receipt className="h-5 w-5 text-primary-foreground" />
             </div>
-            <h1 className="text-2xl font-bold">Split<span className="text-primary">Tab</span></h1>
+            <h1 className="text-2xl font-bold">
+              Split<span className="text-primary">Tab</span>
+            </h1>
           </div>
-          <nav className="hidden md:flex gap-6">
-            <a href="#" className="text-sm font-medium hover:text-primary transition-colors">How It Works</a>
-            <a href="#" className="text-sm font-medium hover:text-primary transition-colors">About</a>
-            <a href="#" className="text-sm font-medium hover:text-primary transition-colors">Contact</a>
+          
+          <nav className="hidden md:flex items-center space-x-6">
+            <a href="#" className="text-sm font-medium transition-colors hover:text-primary">How It Works</a>
+            <a href="#" className="text-sm font-medium transition-colors hover:text-primary">About</a>
+            <a href="#" className="text-sm font-medium transition-colors hover:text-primary">Contact</a>
+            <Button variant="outline" size="sm" className="flex items-center gap-2">
+              <User className="h-4 w-4" />
+              <span>Sign In</span>
+            </Button>
           </nav>
+          
+          <Button variant="ghost" size="icon" className="md:hidden">
+            <Menu className="h-5 w-5" />
+            <span className="sr-only">Toggle menu</span>
+          </Button>
         </div>
       </div>
     </header>
